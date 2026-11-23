@@ -1,95 +1,189 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#073b4c">
-<title>المختبر التفاعلي للأحياء</title>
-<style>
-:root{--navy:#073b4c;--deep:#062b3a;--teal:#08b7b0;--cyan:#55d6e8;--mint:#b8f2e6;--gold:#ffd166;--ink:#153c4a;--paper:#f2fbfa}
-*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:linear-gradient(145deg,#052b3a,#07536a 55%,#087e83);color:#fff;min-height:100vh}
-header{padding:22px clamp(16px,4vw,58px);display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;border-bottom:1px solid #ffffff24;background:#042b3bbd;position:sticky;top:0;z-index:5;backdrop-filter:blur(12px)}
-.brand{display:flex;gap:13px;align-items:center}.brand .icon{font-size:36px}.brand h1{font-size:clamp(20px,3vw,30px);margin:0;color:#72e5f0}.brand p{margin:5px 0 0;color:#d4f6f6;font-size:13px}
-nav{display:flex;gap:8px;flex-wrap:wrap}button{font:inherit;cursor:pointer;border:0}nav button,.ghost{color:white;background:#ffffff12;border:1px solid #48d4df88;border-radius:30px;padding:10px 17px}nav button.active,nav button:hover{background:#12aab8;color:#032d3c}
-main{max-width:1250px;margin:auto;padding:32px 20px 60px}.hero{text-align:center;padding:24px 0 30px}.hero h2{font-size:clamp(25px,4vw,42px);margin:0 0 12px}.hero p{color:#d6f4f1;margin:0;font-size:17px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:20px 0 34px}.card{border:1px solid #5ce0e7;border-radius:22px;overflow:hidden;background:#07394dcc;box-shadow:0 14px 35px #001d2b66;transition:.2s}.card:hover{transform:translateY(-5px)}.card img{width:100%;height:220px;object-fit:cover;display:block}.card button{width:100%;padding:18px;color:white;background:linear-gradient(90deg,#087f91,#0aa69e);font-size:21px;font-weight:bold}
-.note{background:#ffffff12;border:1px solid #ffffff2c;border-radius:18px;padding:18px 22px;color:#e4fbf8;line-height:1.9}
-.view{display:none}.view.active{display:block}.section-head{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-bottom:18px}.section-head h2{margin:0;color:#8df0ed;font-size:clamp(23px,3vw,32px)}.back{background:#ffffff15;border:1px solid #70dfe2;color:#fff;border-radius:25px;padding:9px 16px}
-.lab{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(270px,.8fr);gap:20px;align-items:start}.visual{background:#f8fbf6;border-radius:22px;padding:12px;position:relative;overflow:hidden;box-shadow:0 15px 40px #001d2b66}.visual img{display:block;width:100%;height:auto;border-radius:14px}.hotspot{position:absolute;width:34px;height:34px;border-radius:50%;background:#ffd166;border:3px solid #fff;box-shadow:0 0 0 5px #0b9c9a88,0 3px 12px #123;transform:translate(-50%,-50%);color:#073b4c;font-weight:bold;display:grid;place-items:center}.hotspot:hover,.hotspot.selected{background:#ff8c42;transform:translate(-50%,-50%) scale(1.18)}
-.panel{background:#f2fbfa;color:var(--ink);border-radius:22px;padding:20px;min-height:300px}.panel h3{margin:0 0 12px;color:#087f83;font-size:23px}.panel .hint{color:#587780;line-height:1.8}.part-list{display:grid;gap:8px;margin-top:18px}.part-list button{background:#dff5f1;border:1px solid #b5e7df;color:#15505b;border-radius:12px;padding:11px;text-align:right}.part-list button.active{background:#0b9998;color:white}.detail{margin-top:18px;padding:15px;border-radius:14px;background:#fff;border-right:5px solid var(--gold);line-height:1.9;min-height:125px}.detail strong{color:#087f83}.small{font-size:12px;color:#5d7b82;margin-top:14px;line-height:1.7}
-.organism-intro{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center;background:#ffffff10;border:1px solid #ffffff25;border-radius:20px;padding:18px}.organism-intro img{width:100%;max-height:340px;object-fit:contain;border-radius:14px;background:#f8fbf6}.organism-intro p{line-height:1.9;color:#e1f8f5}
-footer{text-align:center;color:#b8e6e4;padding:22px;font-size:13px}
-@media(max-width:800px){.cards{grid-template-columns:1fr}.card img{height:200px}.lab{grid-template-columns:1fr}.organism-intro{grid-template-columns:1fr}header{position:static}.visual{padding:5px}.hotspot{width:28px;height:28px;font-size:12px}}
-</style>
-</head>
-<body>
-<header>
- <div class="brand"><span class="icon">🔬</span><div><h1>المختبر التفاعلي للأحياء</h1><p>تعلّم • اكتشف • تفاعل</p></div></div>
- <nav><button class="active" data-nav="home">الرئيسية</button></nav>
-</header>
-<main>
-<section id="home" class="view active">
- <div class="hero"><h2>اكتشف أجزاء الكائنات الحية</h2><p>اختر المجموعة، ثم اضغط على الأجزاء لتتعرف إلى أسمائها ووظائفها.</p></div>
- <div class="cards">
-  <article class="card"><img src="bacteria-card.png" alt="البكتيريا والأثريات"><button data-open="bacteria">البكتيريا والأثريات ←</button></article>
-  <article class="card"><img src="protists-card.png" alt="الطلائعيات"><button data-open="protists">الطلائعيات ←</button></article>
-  <article class="card"><img src="fungi-card.png" alt="الفطريات"><button data-open="fungi">الفطريات ←</button></article>
- </div>
-</section>
-
-<section id="bacteria" class="view">
- <div class="section-head"><h2>البكتيريا والأثريات — الخلية البكتيرية</h2><button class="back" data-back>← العودة للدروس</button></div>
- <div class="lab">
-  <div class="visual">
-   <img src="bacteria-3d.png" alt="رسم ثلاثي الأبعاد لخلية بكتيرية">
-   <!-- نقاط تفاعلية تقريبية فوق الرسم؛ يمكن تعديل مواقعها لاحقاً -->
-   <button class="hotspot" style="left:18%;top:24%" data-part="capsule" aria-label="المحفظة">1</button>
-   <button class="hotspot" style="left:29%;top:32%" data-part="wall" aria-label="الجدار الخلوي">2</button>
-   <button class="hotspot" style="left:37%;top:40%" data-part="membrane" aria-label="الغشاء البلازمي">3</button>
-   <button class="hotspot" style="left:42%;top:52%" data-part="cytoplasm" aria-label="السيتوبلازم">4</button>
-   <button class="hotspot" style="left:48%;top:43%" data-part="dna" aria-label="المادة الوراثية">5</button>
-   <button class="hotspot" style="left:64%;top:57%" data-part="plasmid" aria-label="البلازميد">6</button>
-   <button class="hotspot" style="left:56%;top:67%" data-part="ribosomes" aria-label="الرايبوسومات">7</button>
-   <button class="hotspot" style="left:88%;top:18%" data-part="flagella" aria-label="السوط">8</button>
-   <button class="hotspot" style="left:22%;top:78%" data-part="pili" aria-label="الأهداب">9</button>
-  </div>
-  <aside class="panel"><h3 id="part-title">اختر جزءًا من الخلية</h3><p class="hint">اضغط على إحدى العلامات المرقمة في الرسم، أو اختر اسم الجزء من القائمة.</p><div class="detail" id="part-detail">سيظهر هنا اسم الجزء ووظيفته.</div><div class="part-list" id="bacteria-list"></div></aside>
- </div>
-</section>
-
-<section id="protists" class="view">
- <div class="section-head"><h2>الطلائعيات</h2><button class="back" data-back>← العودة للدروس</button></div>
- <div class="organism-intro"><img src="assets/protists-card.png" alt="نماذج ثلاثية الأبعاد للطلائعيات"><div><h3>اختر الكائن الذي تريد استكشافه</h3><p>يتضمن الدرس أمثلة مثل الأميبا والبراميسيوم واليوغلينا والبالزموديوم والليشمانيا والدياتومات. اختر أحدها للانتقال إلى نموذج أجزائه.</p><div class="part-list" id="protist-options"></div></div></div>
-</section>
-
-<section id="fungi" class="view">
- <div class="section-head"><h2>الفطريات</h2><button class="back" data-back>← العودة للدروس</button></div>
- <div class="organism-intro"><img src="assets/fungi-card.png" alt="نماذج ثلاثية الأبعاد للفطريات"><div><h3>اختر نموذج الفطر</h3><p>يعرض الدرس أمثلة منها الخميرة والمشروم والكمأ وعفن الخبز، ويتناول الخيوط الفطرية والغزل الفطري والحواجز الخلوية.</p><div class="part-list" id="fungi-options"></div></div></div>
-</section>
-
-</main>
-<footer>المختبر التفاعلي للأحياء</footer>
-<script>
-const parts={
- capsule:["المحفظة","طبقة خارجية تحيط ببعض الخلايا البكتيرية، وتساعد على حمايتها."],
- wall:["الجدار الخلوي","طبقة تمنح الخلية البكتيرية شكلها وتوفر لها الدعامة والحماية."],
- membrane:["الغشاء البلازمي","ينظم مرور المواد من الخلية وإليها."],
- cytoplasm:["السيتوبلازم","مادة هلامية توجد داخل الخلية وتحدث فيها كثير من العمليات الحيوية."],
- dna:["المادة الوراثية (DNA)","تحمل المعلومات الوراثية التي تتحكم في أنشطة الخلية."],
- plasmid:["البلازميد","قطعة DNA حلقية صغيرة منفصلة عن المادة الوراثية الرئيسة."],
- ribosomes:["الرايبوسومات","تُصنّع البروتينات داخل الخلية."],
- flagella:["السوط","تركيب يساعد بعض البكتيريا على الحركة."],
- pili:["الأهداب/الشعيرات","تراكيب قصيرة تساعد بعض أنواع البكتيريا على الالتصاق بالأسطح."]
-};
-const names=Object.keys(parts), list=document.getElementById('bacteria-list');
-names.forEach((k,i)=>{let b=document.createElement('button');b.textContent=(i+1)+'. '+parts[k][0];b.dataset.part=k;list.appendChild(b)});
-function showPart(k){if(!parts[k])return;document.getElementById('part-title').textContent=parts[k][0];document.getElementById('part-detail').innerHTML='<strong>الوظيفة:</strong><br>'+parts[k][1];document.querySelectorAll('[data-part]').forEach(x=>x.classList.toggle('selected',x.dataset.part===k));document.querySelectorAll('#bacteria-list button').forEach(x=>x.classList.toggle('active',x.dataset.part===k))}
-document.addEventListener('click',e=>{
- const p=e.target.closest('[data-part]');if(p){showPart(p.dataset.part);return}
- const open=e.target.closest('[data-open]');if(open){switchView(open.dataset.open);return}
- if(e.target.closest('[data-back]')){switchView('home');return}
- const nav=e.target.closest('[data-nav]');if(nav){switchView(nav.dataset.nav);document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x===nav));return}
-});
-function switchView(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));window.scrollTo({top:0,behavior:'smooth'})}
-</script>
-</body></html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="theme-color" content="#073b4c">
+        <title>
+        المختبر التفاعلي للأحياء
+        </title>
+        <style>
+        :root{--bg:#073447;--teal:#087f83;--mint:#b8f2e6;--gold:#ffd166;--paper:#f3fbfa;--ink:#153c4a}*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:linear-gradient(140deg,#062b3b,#087b82);color:#fff;min-height:100vh}header{padding:20px clamp(14px,4vw,52px);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;background:#052c3de8;border-bottom:1px solid #ffffff35}.brand{display:flex;align-items:center;gap:12px}.brand span{font-size:35px}.brand h1{font-size:clamp(21px,3vw,31px);margin:0;color:#82edf0}.brand p{margin:4px 0 0;color:#d4f7f3;font-size:13px}nav{display:flex;gap:8px;flex-wrap:wrap}button{font:inherit;cursor:pointer}nav button,.back{border:1px solid #55d5d7;background:#ffffff12;color:#fff;border-radius:24px;padding:10px 16px}nav button.active,nav button:hover{background:#0da7a5;color:#062e3a}main{max-width:1250px;margin:auto;padding:25px 18px 50px}.intro{text-align:center;padding:20px 0 25px}.intro h2{font-size:clamp(25px,4vw,38px);margin:0 0 10px}.intro p{color:#d6f5f1;margin:0}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:18px 0}.card{overflow:hidden;border:1px solid #61d9d9;border-radius:20px;background:#073a4dcc;box-shadow:0 14px 32px #001d2b66}.card img{width:100%;height:205px;object-fit:contain;background:#f5fbf8;display:block}.card button{width:100%;padding:15px;background:linear-gradient(90deg,#087f91,#0aa69e);color:#fff;font-size:20px;font-weight:bold;border:0}.view{display:none}.view.active{display:block}.head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}.head h2{margin:0;color:#9af1e8;font-size:clamp(22px,3vw,31px)}.subtabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.subtabs button{border:1px solid #b5e7df;background:#e3f6f2;color:#14515b;border-radius:22px;padding:9px 14px}.subtabs button.active{background:#0aa39e;color:white}.lab{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,.8fr);gap:18px;align-items:start}.visual{background:#f7fcfa;border-radius:22px;padding:12px;position:relative;overflow:hidden;box-shadow:0 15px 40px #001d2b66;min-height:360px;display:grid;place-items:center}.visual img{display:block;width:100%;max-height:540px;object-fit:contain;border-radius:14px}.hotspot{position:absolute;width:34px;height:34px;border-radius:50%;background:var(--gold);border:3px solid white;box-shadow:0 0 0 5px #0b9c9a55,0 3px 12px #123;transform:translate(-50%,-50%);color:#073b4c;font-weight:bold;display:grid;place-items:center;padding:0}.hotspot:hover,.hotspot.selected{background:#ff974f;transform:translate(-50%,-50%) scale(1.17)}.panel{background:var(--paper);color:var(--ink);border-radius:22px;padding:20px;min-height:360px}.panel h3{margin:0 0 10px;color:#087f83;font-size:24px}.lead{color:#5a7d83;line-height:1.8;margin:0 0 12px}.detail{padding:15px;border-radius:14px;background:#fff;border-right:5px solid var(--gold);line-height:1.9;min-height:120px}.detail b{color:#087f83}.part-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}.part-list button{background:#e2f5f1;border:1px solid #c4e9e2;color:#15505b;border-radius:11px;padding:10px;text-align:right}.part-list button.active{background:#0b9998;color:#fff}footer{text-align:center;color:#b8e6e4;padding:20px;font-size:12px}@media(max-width:800px){.cards{grid-template-columns:1fr}.card img{height:180px}.lab{grid-template-columns:1fr}.visual{min-height:260px}.visual img{max-height:420px}.panel{min-height:0}}@media(max-width:480px){main{padding:18px 12px 35px}.hotspot{width:29px;height:29px;font-size:12px}.part-list{grid-template-columns:1fr}}
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="brand">
+                <span>
+                🔬
+                </span>
+                <div>
+                    <h1>
+                    المختبر التفاعلي للأحياء
+                    </h1>
+                    <p>
+                    اكتشف أجزاء الكائنات الحية بطريقة تفاعلية
+                    </p>
+                </div>
+            </div>
+            <nav>
+                <button class="active" data-nav="home">
+                الرئيسية
+                </button>
+                <button data-nav="bacteria">
+                البكتيريا والأثريات
+                </button>
+                <button data-nav="protists">
+                الطلائعيات
+                </button>
+                <button data-nav="fungi">
+                الفطريات
+                </button>
+            </nav>
+        </header>
+        <main>
+            <section id="home" class="view active">
+                <div class="intro">
+                    <h2>
+                    اختر الدرس وابدأ الاستكشاف
+                    </h2>
+                    <p>
+                    اضغط على العلامات فوق الرسم لتتعرف إلى الجزء ووظيفته.
+                    </p>
+                </div>
+                <div class="cards">
+                    <article class="card">
+                        <img src="bacteria.png" alt="خلية بكتيرية">
+                        <button data-open="bacteria">
+                        البكتيريا والأثريات ←
+                        </button>
+                    </article>
+                    <article class="card">
+                        <img src="paramecium.png" alt="براميسيوم">
+                        <button data-open="protists">
+                        الطلائعيات ←
+                        </button>
+                    </article>
+                    <article class="card">
+                        <img src="mushroom.png" alt="فطر">
+                        <button data-open="fungi">
+                        الفطريات ←
+                        </button>
+                    </article>
+                </div>
+            </section>
+            <section id="bacteria" class="view">
+                <div class="head">
+                    <h2>
+                    البكتيريا والأثريات — الخلية البكتيرية
+                    </h2>
+                    <button class="back" data-back>
+                    العودة للدروس
+                    </button>
+                </div>
+                <div class="lab">
+                    <div class="visual" id="bacteria-visual">
+                        <img src="bacteria.png" alt="خلية بكتيرية ثلاثية الأبعاد">
+                    </div>
+                    <aside class="panel">
+                        <h3 id="bacteria-title">
+                        اختر جزءًا من الخلية
+                        </h3>
+                        <p class="lead">
+                        اضغط على النقاط المرقمة أو اختر اسم الجزء من القائمة.
+                        </p>
+                        <div class="detail" id="bacteria-detail">
+                            ستظهر هنا وظيفة الجزء الذي تختاره.
+                        </div>
+                        <div class="part-list" id="bacteria-list">
+                        </div>
+                    </aside>
+                </div>
+            </section>
+            <section id="protists" class="view">
+                <div class="head">
+                    <h2>
+                    الطلائعيات
+                    </h2>
+                    <button class="back" data-back>
+                    العودة للدروس
+                    </button>
+                </div>
+                <div class="subtabs" id="protist-tabs">
+                </div>
+                <div class="lab">
+                    <div class="visual" id="protist-visual">
+                    </div>
+                    <aside class="panel">
+                        <h3 id="protist-title">
+                        اختر كائنًا
+                        </h3>
+                        <p class="lead" id="protist-lead">
+                        اختر أحد النماذج لاستكشاف أجزائه.
+                        </p>
+                        <div class="detail" id="protist-detail">
+                            اضغط على إحدى العلامات في الرسم.
+                        </div>
+                        <div class="part-list" id="protist-list">
+                        </div>
+                    </aside>
+                </div>
+            </section>
+            <section id="fungi" class="view">
+                <div class="head">
+                    <h2>
+                    الفطريات
+                    </h2>
+                    <button class="back" data-back>
+                    العودة للدروس
+                    </button>
+                </div>
+                <div class="subtabs" id="fungi-tabs">
+                </div>
+                <div class="lab">
+                    <div class="visual" id="fungi-visual">
+                    </div>
+                    <aside class="panel">
+                        <h3 id="fungi-title">
+                        اختر نموذجًا فطريًا
+                        </h3>
+                        <p class="lead" id="fungi-lead">
+                        اختر نموذجًا من القائمة لاستكشاف أجزائه.
+                        </p>
+                        <div class="detail" id="fungi-detail">
+                            اضغط على إحدى العلامات في الرسم.
+                        </div>
+                        <div class="part-list" id="fungi-list">
+                        </div>
+                    </aside>
+                </div>
+            </section>
+        </main>
+        <footer>
+            المختبر التفاعلي للأحياء
+        </footer>
+        <script>
+        const $=id=>document.getElementById(id);function switchView(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));document.querySelectorAll('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===id));window.scrollTo({top:0,behavior:'smooth'})}document.addEventListener('click',e=>{let o=e.target.closest('[data-open]');if(o)switchView(o.dataset.open);let n=e.target.closest('[data-nav]');if(n)switchView(n.dataset.nav);if(e.target.closest('[data-back]'))switchView('home')});
+const bacteria={parts:[['المحفظة','طبقة خارجية تحيط ببعض الخلايا البكتيرية، وتساعد على حمايتها.'],['الجدار الخلوي','يدعم الخلية ويساعد على المحافظة على شكلها.'],['الغشاء البلازمي','ينظم مرور المواد من الخلية وإليها.'],['المادة الوراثية (DNA)','تحمل المعلومات الوراثية الرئيسة للخلية.'],['البلازميد','قطعة صغيرة حلقية من DNA توجد منفصلة عن المادة الوراثية الرئيسة.'],['السيتوبلازم','مادة داخل الخلية تجري فيها عمليات حيوية متعددة.'],['الرايبوسومات','تشارك في تصنيع البروتينات.'],['الأسواط','تساعد بعض البكتيريا على الحركة.']],pos:[[21,22],[32,34],[43,41],[49,48],[64,60],[42,65],[56,60],[87,73]]};
+function addList(id,parts,choose){$(id+'-list').innerHTML='';parts.forEach((p,i)=>{let b=document.createElement('button');b.textContent=p[0];b.onclick=()=>choose(i);$(id+'-list').appendChild(b)})}function addDots(id,pos,choose){$(id+'-visual').querySelectorAll('.hotspot').forEach(x=>x.remove());pos.forEach((xy,i)=>{let d=document.createElement('button');d.className='hotspot';d.textContent=i+1;d.style.left=xy[0]+'%';d.style.top=xy[1]+'%';d.onclick=()=>choose(i);$(id+'-visual').appendChild(d)})}function setInfo(id,parts,i){$(id+'-title').textContent=parts[i][0];$(id+'-detail').innerHTML='
+        <b>
+        الوظيفة:
+        </b>
+        <br>
+        '+parts[i][1];$(id+'-list').querySelectorAll('button').forEach((b,j)=>b.classList.toggle('active',i===j));$(id+'-visual').querySelectorAll('.hotspot').forEach((b,j)=>b.classList.toggle('selected',i===j))}function setupBacteria(){const p=bacteria.parts;let choose=i=>setInfo('bacteria',p,i);addList('bacteria',p,choose);addDots('bacteria',bacteria.pos,choose);choose(0)}setupBacteria();
+const protists={
+'الأميبا':{img:'amoeba.png',lead:'الأميبا تتحرك بالأقدام الكاذبة.',parts:[['الأقدام الكاذبة','امتدادات مؤقتة من السيتوبلازم تساعد الأميبا على الحركة والإحاطة بالغذاء.'],['النواة','تحتوي على المادة الوراثية وتدير أنشطة الخلية.'],['الفجوة الغذائية','تحتوي على الغذاء الذي ابتلعته الخلية ويجري هضمه.'],['الفجوة المنقبضة','تساعد على التخلص من الماء الزائد داخل الخلية.'],['السيتوبلازم','المادة الداخلية التي توجد فيها مكونات الخلية وتحدث فيها عملياتها الحيوية.']],pos:[[25,48],[48,49],[59,62],[43,70],[53,40]]},
+'البراميسيوم':{img:'paramecium.png',lead:'البراميسيوم يتحرك بالأهداب، ويظهر في الكتاب تركيب داخلي مميز.',parts:[['الأهداب','تساعد على الحركة ودفع الغذاء باتجاه الأخدود الفمي.'],['النواة الكبيرة','تنظم العمليات الحيوية اليومية في الخلية.'],['النواة الصغيرة','تؤدي دورًا في العمليات المرتبطة بالتكاثر.'],['الأخدود الفمي','يساعد على إدخال الغذاء إلى داخل الخلية.'],['الفجوات الغذائية','تحتوي على الغذاء داخل الخلية.'],['الفجوة المنقبضة','تساعد على التخلص من الماء الزائد.']],pos:[[30,22],[53,42],[63,56],[70,68],[44,64],[22,65]]},
+'اليوغلينا':{img:'euglena.png',lead:'اليوغلينا تتحرك باستعمال السوط، وتحتوي على صبغة الكلوروفيل.',parts:[['السوط','تركيب طويل يساعد اليوغلينا على الحركة.'],['البقعة العينية','تساعدها على الإحساس باتجاه الضوء.'],['البلاستيدات الخضراء','تحتوي على الكلوروفيل وتقوم بعملية البناء الضوئي.'],['النواة','تحتوي على المادة الوراثية وتدير أنشطة الخلية.']],pos:[[85,16],[67,42],[44,65],[35,48]]},
+'الدياتومات':{img:'diatoms.png',lead:'الدياتومات من الطحالب وحيدة الخلية، وتظهر في الكتاب بأشكال متعددة.',parts:[['الغلاف السيليكي','غلاف صلب من السيليكا يحيط بالخلية ويحميها.'],['محتويات الخلية','تضم مكونات الخلية الحية داخل الغلاف.']],pos:[[50,38],[52,57]]}};
+const fungi={
+'الخيوط الفطرية والغزل الفطري':{img:'hyphae.svg',lead:'يتكون جسم كثير من الفطريات من خيوط فطرية تتجمع لتكوّن الغزل الفطري.',parts:[['الخيوط الفطرية','تراكيب خيطية يتكون منها جسم الفطر.'],['الغزل الفطري','شبكة من الخيوط الفطرية تشكل جسم الفطر.'],['الحواجز الخلوية (Septa)','تقسم الخيط الفطري إلى أجزاء في بعض الفطريات.'],['الخيوط غير المقسمة (Coenocytes)','خيوط فطرية لا تفصلها حواجز خلوية.']],pos:[[48,30],[52,73],[65,47],[31,58]]},
+'عفن الخبز':{img:'bread-mold.png',lead:'يظهر في عفن الخبز حامل الأكياس البوغية والأكياس البوغية وأشباه الجذور والخيوط الفطرية.',parts:[['الكيس البوغي','تركيب تتكون داخله الأبواغ.'],['الحامل','يحمل الكيس البوغي.'],['أشباه الجذور','تساعد الفطر على التثبت وامتصاص الغذاء.'],['الخيوط الفطرية','تكوّن شبكة الفطر وتمتد في الوسط الذي ينمو عليه.']],pos:[[70,24],[51,47],[30,78],[65,77]]},
+'الخميرة والتبرعم':{img:'yeast.png',lead:'الخميرة فطر وحيد الخلية، ويتكاثر لاجنسيًا بالتبرعم.',parts:[['الخلية الأم','الخلية الأصلية التي ينشأ منها البرعم.'],['البرعم','خلية صغيرة تنشأ على سطح الخلية الأم ثم تنمو.']],pos:[[43,52],[67,33]]},
+'المشروم':{img:'mushroom.png',lead:'المشروم مثال على الفطريات عديدة الخلايا، ويظهر في الكتاب ضمن أمثلة الفطريات.',parts:[['الخيوط الفطرية','تراكيب خيطية تكوّن جسم الفطر.'],['الغزل الفطري','شبكة الخيوط الفطرية التي تكوّن جسم الفطر.']],pos:[[51,75],[50,88]]}};
+const active={};function render(id,group,name){const item=group[name];active[id]=item;$(id+'-title').textContent=name;$(id+'-lead').textContent=item.lead;$(id+'-visual').innerHTML='
+        <img src="assets/'+item.img+'" alt="'+name+'">
+        ';$(id+'-tabs').querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.textContent===name));let choose=i=>setInfo(id,item.parts,i);addList(id,item.parts,choose);addDots(id,item.pos,choose);choose(0)}function setupTabs(id,group){$(id+'-tabs').innerHTML='';Object.keys(group).forEach(name=>{let b=document.createElement('button');b.textContent=name;b.onclick=()=>render(id,group,name);$(id+'-tabs').appendChild(b)});render(id,group,Object.keys(group)[0])}setupTabs('protist',protists);setupTabs('fungi',fungi);
+        </script>
+    </body>
+</html>
